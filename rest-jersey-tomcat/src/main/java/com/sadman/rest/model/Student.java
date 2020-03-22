@@ -1,7 +1,9 @@
 package com.sadman.rest.model;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Student {
     private long id;
     private String userName;
@@ -13,12 +15,11 @@ public class Student {
 
     }
 
-    public Student(long id, String userName, String firstName, String lastName, Date created) {
+    public Student(long id, String userName, String firstName, String lastName) {
         this.id = id;
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.created = created;
     }
 
     public long getId() {

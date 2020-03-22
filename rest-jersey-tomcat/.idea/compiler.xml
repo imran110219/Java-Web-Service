@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="rest-jersey-tomcat" target="1.5" />
+      <module name="rest-jersey-tomcat" target="7" />
     </bytecodeTargetLevel>
   </component>
 </project>
