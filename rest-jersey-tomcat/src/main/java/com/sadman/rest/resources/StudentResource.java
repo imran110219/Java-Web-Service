@@ -20,8 +20,8 @@ public class StudentResource {
     }
 
     @POST
-    public Student addStudent(Student student) {
-        return studentService.addStudent(student);
+    public void addStudent(Student student) {
+        studentService.addStudent(student);
     }
 
     @GET
@@ -40,6 +40,6 @@ public class StudentResource {
     @DELETE
     @Path("/{userName}")
     public void deleteStudent(@PathParam("userName") String userName) {
-        studentService.removeStudent(userName);
+        studentService.deleteStudent(userName);
     }
 }

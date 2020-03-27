@@ -1,25 +1,36 @@
 package com.sadman.rest.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Student {
+@Entity
+@Table(name="student")
+public class Student implements Serializable {
+    @Id
+    @GeneratedValue
+    @Column(name="id")
     private long id;
+
+    @Column(name="user_name")
     private String userName;
+
+    @Column(name="first_name")
     private String firstName;
+
+    @Column(name="last_name")
     private String lastName;
-    private Date created;
 
-    public Student(){
+    @Column(name="password")
+    private String password;
 
-    }
-
-    public Student(long id, String userName, String firstName, String lastName) {
-        this.id = id;
+    public Student(String userName, String firstName, String lastName, String password) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
     }
 
     public long getId() {
@@ -54,11 +65,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Date getCreated() {
-        return created;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

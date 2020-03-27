@@ -1,13 +1,16 @@
 package com.sadman.rest.service;
 
+import com.sadman.rest.dao.StudentDAO;
 import com.sadman.rest.database.DatabaseClass;
 import com.sadman.rest.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+// https://gist.github.com/bluekvirus/29789fe8080e31d84f921241311e567d
 public class StudentService {
+
+    private StudentDAO studentDAO;
     private Map<String, Student> students = DatabaseClass.getStudents();
 
     public StudentService() {
@@ -16,17 +19,15 @@ public class StudentService {
     }
 
     public List<Student> getAllStudents() {
-        return new ArrayList<Student>(students.values());
+        return studentDAO.getStudents();
     }
 
     public Student getStudent(String userName) {
-        return students.get(userName);
+        return studentDAO.getStudent(userName);
     }
 
     public Student addStudent(Student student) {
-        student.setId(students.size() + 1);
-        students.put(student.getUserName(), student);
-        return student;
+        studentDAO.addStudent(student);
     }
 
     public Student updateStudent(Student student) {
@@ -37,7 +38,7 @@ public class StudentService {
         return student;
     }
 
-    public Student removeStudent(String userName) {
-        return students.remove(userName);
+    public void deleteStudent(String userName) {
+        studentDAO.deleteStudent(userName);
     }
 }
