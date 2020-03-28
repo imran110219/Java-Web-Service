@@ -10,13 +10,7 @@ import java.util.Map;
 // https://gist.github.com/bluekvirus/29789fe8080e31d84f921241311e567d
 public class StudentService {
 
-    private StudentDAO studentDAO;
-    private Map<String, Student> students = DatabaseClass.getStudents();
-
-    public StudentService() {
-        students.put("sadman", new Student(1L, "sadman", "Sadman", "Sobhan"));
-        students.put("shahjahan", new Student(2L, "shahjahan", "Shahjahan", "Shahed"));
-    }
+    StudentDAO studentDAO = new StudentDAO();
 
     public List<Student> getAllStudents() {
         return studentDAO.getStudents();
@@ -26,16 +20,14 @@ public class StudentService {
         return studentDAO.getStudent(userName);
     }
 
-    public Student addStudent(Student student) {
+    public void addStudent(Student student) {
         studentDAO.addStudent(student);
     }
 
-    public Student updateStudent(Student student) {
-        if (student.getUserName().isEmpty()) {
-            return null;
+    public void updateStudent(Student student) {
+        if (!student.getUserName().isEmpty()) {
+            studentDAO.updateStudent(student.getUserName(), student);
         }
-        students.put(student.getUserName(), student);
-        return student;
     }
 
     public void deleteStudent(String userName) {

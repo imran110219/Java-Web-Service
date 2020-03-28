@@ -32,9 +32,9 @@ public class StudentResource {
 
     @PUT
     @Path("/{userName}")
-    public Student updateStudent(@PathParam("userName") String userName, Student student) {
+    public void updateStudent(@PathParam("userName") String userName, Student student) {
         student.setUserName(userName);
-        return studentService.updateStudent(student);
+        studentService.updateStudent(student);
     }
 
     @DELETE

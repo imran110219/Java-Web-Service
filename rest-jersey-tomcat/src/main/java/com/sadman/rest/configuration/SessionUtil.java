@@ -20,7 +20,6 @@ public class SessionUtil {
 
     private SessionUtil(){
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml");
 
         Properties settings = new Properties();
         settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");

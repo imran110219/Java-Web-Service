@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name="student")
-public class Student implements Serializable {
+public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private long id;
 
@@ -25,6 +25,10 @@ public class Student implements Serializable {
 
     @Column(name="password")
     private String password;
+
+    public Student(){
+
+    }
 
     public Student(String userName, String firstName, String lastName, String password) {
         this.userName = userName;
