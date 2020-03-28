@@ -24,13 +24,14 @@ public class StudentService {
         studentDAO.addStudent(student);
     }
 
-    public void updateStudent(Student student) {
+    public int updateStudent(Student student) {
         if (!student.getUserName().isEmpty()) {
-            studentDAO.updateStudent(student.getUserName(), student);
+            return studentDAO.updateStudent(student.getUserName(), student);
         }
+        return 0;
     }
 
-    public void deleteStudent(String userName) {
-        studentDAO.deleteStudent(userName);
+    public int deleteStudent(String userName) {
+        return studentDAO.deleteStudent(userName);
     }
 }

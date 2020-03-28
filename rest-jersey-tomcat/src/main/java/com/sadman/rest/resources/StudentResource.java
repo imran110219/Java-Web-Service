@@ -5,6 +5,7 @@ import com.sadman.rest.service.StudentService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/students")
@@ -20,8 +21,9 @@ public class StudentResource {
     }
 
     @POST
-    public void addStudent(Student student) {
+    public Response addStudent(Student student) {
         studentService.addStudent(student);
+        return Response.ok().build();
     }
 
     @GET
@@ -32,14 +34,22 @@ public class StudentResource {
 
     @PUT
     @Path("/{userName}")
-    public void updateStudent(@PathParam("userName") String userName, Student student) {
+    public Response updateStudent(@PathParam("userName") String userName, Student student) {
         student.setUserName(userName);
-        studentService.updateStudent(student);
+        int count = studentService.updateStudent(student);
+        if(count==0){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        return Response.ok().build();
     }
 
     @DELETE
     @Path("/{userName}")
-    public void deleteStudent(@PathParam("userName") String userName) {
-        studentService.deleteStudent(userName);
+    public Response deleteStudent(@PathParam("userName") String userName) {
+        int count = studentService.deleteStudent(userName);
+        if(count==0){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        return Response.ok().build();
     }
 }

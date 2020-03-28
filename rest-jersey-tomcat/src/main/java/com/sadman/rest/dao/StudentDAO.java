@@ -4,8 +4,8 @@ import com.sadman.rest.configuration.SessionUtil;
 import com.sadman.rest.model.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import org.hibernate.Query;
+
 import java.util.List;
 
 public class StudentDAO {
@@ -26,7 +26,7 @@ public class StudentDAO {
         return students;
     }
 
-    public void deleteStudent(String userName) {
+    public int deleteStudent(String userName) {
         Session session = SessionUtil.getSession();
         Transaction tx = session.beginTransaction();
         String hql = "delete from Student where userName = :userName";
@@ -36,6 +36,7 @@ public class StudentDAO {
         System.out.println("Rows affected: " + rowCount);
         tx.commit();
         session.close();
+        return rowCount;
     }
 
     public Student getStudent(String userName) {
@@ -49,7 +50,7 @@ public class StudentDAO {
         return student;
     }
 
-    public void updateStudent(String userName, Student student){
+    public int updateStudent(String userName, Student student){
         Session session = SessionUtil.getSession();
         Transaction tx = session.beginTransaction();
         String hql = "update Student set firstName = :firstName, lastName=:lastName, password=:password where userName = :userName";
@@ -62,5 +63,6 @@ public class StudentDAO {
         System.out.println("Rows affected: " + rowCount);
         tx.commit();
         session.close();
+        return rowCount;
     }
 }
