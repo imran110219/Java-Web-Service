@@ -14,14 +14,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class LoadDatabase {
 
-    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
-
-    @Bean
-    CommandLineRunner initDatabase(EmployeeRepository repository) {
-
-        return args -> {
-            log.info("Preloading " + repository.save(new Employee("Sadman", "Sobhan", "imran@gmail.com")));
-            log.info("Preloading " + repository.save(new Employee("John", "Doe", "john@gmail.com")));
-        };
-    }
+//    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+//
+//    @Bean
+//    CommandLineRunner initDatabase(EmployeeRepository repository) {
+//
+//        return args -> {
+//            log.info("Preloading " + repository.save(new Employee("Sadman", "Sobhan", "imran@gmail.com")));
+//            log.info("Preloading " + repository.save(new Employee("John", "Doe", "john@gmail.com")));
+//        };
+//    }
 }
