@@ -37,7 +37,7 @@ public class StudentResource {
     public Response updateStudent(@PathParam("userName") String userName, Student student) {
         student.setUserName(userName);
         int count = studentService.updateStudent(student);
-        if(count==0){
+        if (count == 0) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         return Response.ok().build();
@@ -47,7 +47,7 @@ public class StudentResource {
     @Path("/{userName}")
     public Response deleteStudent(@PathParam("userName") String userName) {
         int count = studentService.deleteStudent(userName);
-        if(count==0){
+        if (count == 0) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         return Response.ok().build();

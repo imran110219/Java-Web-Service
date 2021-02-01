@@ -11,14 +11,14 @@ import org.hibernate.service.ServiceRegistry;
 import java.util.Properties;
 
 public class SessionUtil {
-    private static SessionUtil instance=new SessionUtil();
+    private static SessionUtil instance = new SessionUtil();
     private SessionFactory sessionFactory;
 
-    public static SessionUtil getInstance(){
+    public static SessionUtil getInstance() {
         return instance;
     }
 
-    private SessionUtil(){
+    private SessionUtil() {
         Configuration configuration = new Configuration();
 
         Properties settings = new Properties();
@@ -37,8 +37,8 @@ public class SessionUtil {
         sessionFactory = configuration.buildSessionFactory();
     }
 
-    public static Session getSession(){
-        Session session =  getInstance().sessionFactory.openSession();
+    public static Session getSession() {
+        Session session = getInstance().sessionFactory.openSession();
 
         return session;
     }

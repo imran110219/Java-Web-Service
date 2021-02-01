@@ -34,14 +34,14 @@ public class ConsumeWebService {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-        return restTemplate.exchange("http://localhost:8080/employees/"+id, HttpMethod.GET, entity, String.class).getBody();
+        return restTemplate.exchange("http://localhost:8080/employees/" + id, HttpMethod.GET, entity, String.class).getBody();
     }
 
     @PostMapping(value = "/template/employees")
     public String createEmployee(@RequestBody Employee employee) {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<Employee> entity = new HttpEntity<Employee>(employee,headers);
+        HttpEntity<Employee> entity = new HttpEntity<Employee>(employee, headers);
 
         return restTemplate.exchange("http://localhost:8080/employees", HttpMethod.POST, entity, String.class).getBody();
     }
@@ -50,9 +50,9 @@ public class ConsumeWebService {
     public String updateEmployee(@PathVariable("id") String id, @RequestBody Employee employee) {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<Employee> entity = new HttpEntity<Employee>(employee,headers);
+        HttpEntity<Employee> entity = new HttpEntity<Employee>(employee, headers);
 
-        return restTemplate.exchange("http://localhost:8080/employees/"+id, HttpMethod.PUT, entity, String.class).getBody();
+        return restTemplate.exchange("http://localhost:8080/employees/" + id, HttpMethod.PUT, entity, String.class).getBody();
     }
 
     @DeleteMapping(value = "/template/employees/{id}")
@@ -61,6 +61,6 @@ public class ConsumeWebService {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<Employee> entity = new HttpEntity<Employee>(headers);
 
-        return restTemplate.exchange("http://localhost:8080/employees/"+id, HttpMethod.DELETE, entity, String.class).getBody();
+        return restTemplate.exchange("http://localhost:8080/employees/" + id, HttpMethod.DELETE, entity, String.class).getBody();
     }
 }
