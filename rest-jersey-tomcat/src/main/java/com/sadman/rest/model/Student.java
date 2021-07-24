@@ -7,26 +7,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name="student")
+@Table(name = "student")
 public class Student {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
-    @Column(name="user_name")
+    @Column(name = "user_name")
     private String userName;
 
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    public Student(){
+    public Student() {
 
     }
 

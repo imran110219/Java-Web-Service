@@ -10,7 +10,7 @@ import java.util.List;
 
 public class StudentDAO {
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) {
         Session session = SessionUtil.getSession();
         Transaction tx = session.beginTransaction();
         session.save(student);
@@ -18,7 +18,7 @@ public class StudentDAO {
         session.close();
     }
 
-    public List<Student> getStudents(){
+    public List<Student> getStudents() {
         Session session = SessionUtil.getSession();
         Query query = session.createQuery("from Student");
         List<Student> students = query.list();
@@ -31,7 +31,7 @@ public class StudentDAO {
         Transaction tx = session.beginTransaction();
         String hql = "delete from Student where userName = :userName";
         Query query = session.createQuery(hql);
-        query.setString("userName",userName);
+        query.setString("userName", userName);
         int rowCount = query.executeUpdate();
         System.out.println("Rows affected: " + rowCount);
         tx.commit();
@@ -43,22 +43,22 @@ public class StudentDAO {
         Session session = SessionUtil.getSession();
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("from Student where userName = :userName");
-        query.setString("userName",userName);
+        query.setString("userName", userName);
         Student student = (Student) query.list().get(0);
         tx.commit();
         session.close();
         return student;
     }
 
-    public int updateStudent(String userName, Student student){
+    public int updateStudent(String userName, Student student) {
         Session session = SessionUtil.getSession();
         Transaction tx = session.beginTransaction();
         String hql = "update Student set firstName = :firstName, lastName=:lastName, password=:password where userName = :userName";
         Query query = session.createQuery(hql);
-        query.setString("userName",userName);
-        query.setString("firstName",student.getFirstName());
-        query.setString("lastName",student.getLastName());
-        query.setString("password",student.getPassword());
+        query.setString("userName", userName);
+        query.setString("firstName", student.getFirstName());
+        query.setString("lastName", student.getLastName());
+        query.setString("password", student.getPassword());
         int rowCount = query.executeUpdate();
         System.out.println("Rows affected: " + rowCount);
         tx.commit();
